@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Patient Care Nepal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+            padding: 80px 50px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            opacity: 0.95;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            max-width: 1000px;
+            margin: -50px auto 50px;
+            padding: 0 20px;
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 10px;
+            padding: 50px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .contact-info h2 {
+            color: #2196F3;
+            margin-bottom: 40px;
+            font-size: 36px;
+            text-align: center;
+        }
+
+        .contact-details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-detail:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.2);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: #2196F3;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 26px;
+            flex-shrink: 0;
+        }
+
+        .contact-text {
+            flex: 1;
+        }
+
+        .contact-text h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .contact-text p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .contact-text a {
+            color: #2196F3;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-text a:hover {
+            color: #1976D2;
+            text-decoration: underline;
+        }
+
+        /* Call Button */
+        .call-button {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 40px auto 0;
+            padding: 18px 40px;
+            background: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .call-button:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        .call-button:active {
+            transform: translateY(0);
+        }
+
+        .call-button i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        /* Desktop only - show just number */
+        @media (min-width: 1025px) {
+            .call-button {
+                background: #2196F3;
+                cursor: default;
+                pointer-events: none;
+            }
+
+            .call-button:hover {
+                background: #2196F3;
+                transform: none;
+            }
+
+            .call-button-text::before {
+                content: "📞 ";
+            }
+        }
+
+        /* Map Section */
+        .map-section {
+            margin-top: 30px;
+            height: 450px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .map-section iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 50px 20px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .contact-card {
+                padding: 30px 20px;
+            }
+
+            .contact-info h2 {
+                font-size: 28px;
+                margin-bottom: 30px;
+            }
+
+            .contact-details-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .map-section {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 22px;
+            }
+
+            .contact-text h3 {
+                font-size: 18px;
+            }
+
+            .contact-text p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Contact Us</h1>
+        <p>Get in touch with us for quality healthcare services</p>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="contact-container">
+        <div class="contact-card contact-info">
+            <h2>Get In Touch</h2>
+            
+            <div class="contact-details-grid">
+                <div class="contact-detail">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-text">
+                        <h3>Our Location</h3>
+                        <p>Kadaghari, Lahure Chock<br>Kathmandu, Nepal</p>
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-text">
+                        <h3>Phone Number</h3>
+                        <p><a href="tel:9841151231">9841151231</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-text">
+                        <h3>Email Address</h3>
+                        <p>
+                            <a href="mailto:Patientcarenepal@gmail.com">Patientcarenepal@gmail.com</a><br>
+                            <a href="mailto:info@biramikuruwa.com.np">info@biramikuruwa.com.np</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <div class="contact-icon">🕐</div>
+                    <div class="contact-text">
+                        <h3>Working Hours</h3>
+                        <p>Always Open<br>24/7 Healthcare Services</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call Button -->
+            <a href="tel:9841151231" class="call-button" id="callButton">
+                <span class="call-button-text">Call Now: 9841151231</span>
+            </a>
+
+            <!-- Map Section -->
+            <div class="map-section">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.0636891234567!2d85.3240!3d27.7172!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjfCsDQzJzAyLjAiTiA4NcKwMTknMjYuNCJF!5e0!3m2!1sen!2snp!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Detect if device is mobile/tablet or desktop
+        function isMobileOrTablet() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 1024;
+        }
+
+        // Update call button based on device
+        function updateCallButton() {
+            const callButton = document.getElementById('callButton');
+            const buttonText = callButton.querySelector('.call-button-text');
+            
+            if (isMobileOrTablet()) {
+                // Mobile/Tablet: Make it clickable to call
+                callButton.href = 'tel:9841151231';
+                callButton.style.pointerEvents = 'auto';
+                callButton.style.cursor = 'pointer';
+                buttonText.textContent = '📞 Call Now: 9841151231';
+            } else {
+                // Desktop: Just show the number
+                callButton.removeAttribute('href');
+                callButton.style.pointerEvents = 'none';
+                callButton.style.cursor = 'default';
+                buttonText.textContent = '📞 9841151231';
+            }
+        }
+
+        // Run on page load
+        updateCallButton();
+
+        // Update on window resize
+        window.addEventListener('resize', updateCallButton);
+    </script>
+</body>
+</html>
