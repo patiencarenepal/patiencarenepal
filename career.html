@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Careers | Patient Care Nepal</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif
+}
+body{
+    background:#f5f9ff; 
+    color:#333
+}
+
+/* HEADER */
+.header{
+    background:linear-gradient(90deg,#0b6edc,#0aa6c8);
+    padding:70px 20px;
+    text-align:center;
+    color:#fff
+}
+.header h1{font-size:36px}
+.header p{margin-top:10px}
+
+/* JOBS */
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:60px 20px
+}
+.jobs{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px
+}
+.job-card{
+    background:#fff;
+    border-radius:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    overflow:hidden;
+    transition:.3s
+}
+.job-card:hover{transform:translateY(-6px)}
+.job-card img{
+    width:100%;
+    height:180px;
+    object-fit:cover
+}
+.job-content{padding:22px}
+.job-content h3{color:#0b6edc}
+.job-content p{font-size:14px;margin:12px 0}
+.job-content button{
+    background:#0b6edc;
+    color:#fff;
+    border:none;
+    padding:12px 24px;
+    border-radius:30px;
+    cursor:pointer
+}
+
+/* MODAL */
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:999
+}
+.modal.active{display:flex}
+
+.modal-box{
+    background:#fff;
+    width:92%;
+    max-width:500px;
+    border-radius:20px;
+    padding:30px;
+    position:relative
+}
+.close-btn{
+    position:absolute;
+    right:18px;
+    top:12px;
+    font-size:22px;
+    cursor:pointer
+}
+.modal-box h2{
+    text-align:center;
+    color:#0b6edc;
+    margin-bottom:20px
+}
+
+/* FORM */
+form{
+    display:grid;
+    gap:14px
+}
+form input{
+    padding:14px;
+    border-radius:10px;
+    border:1px solid #ddd
+}
+input[readonly]{background:#eef3ff}
+input[type="file"]{
+    background:#fafafa
+}
+form button{
+    background:linear-gradient(90deg,#0b6edc,#0aa6c8);
+    color:#fff;
+    border:none;
+    padding:14px;
+    border-radius:30px;
+    cursor:pointer
+}
+
+/* MESSAGE */
+.message{
+    display:none;
+    font-size:14px;
+    margin-top:10px
+}
+.success{color:green}
+.error{color:red}
+
+/* FOOTER */
+.footer{
+    background:#0b6edc;
+    color:#fff;
+    text-align:center;
+    padding:20px;
+    margin-top:60px
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<section class="header">
+<h1>Career Opportunities</h1>
+<p>Apply for healthcare & patient support services</p>
+</section>
+
+<!-- JOBS -->
+<section class="container">
+<div class="jobs">
+
+<!-- JOB CARD TEMPLATE -->
+<script>
+const jobs = [
+ "Senior Care",
+ "Patient Support",
+ "Home Care",
+ "Age Care",
+ "Home Lab Collection",
+ "Delivery Care",
+ "Doctor Consultation"
+];
+</script>
+
+<div class="jobs" id="jobList"></div>
+
+</section>
+
+<!-- MODAL -->
+<div class="modal" id="applyModal">
+<div class="modal-box">
+
+<span class="close-btn" onclick="closeForm()">×</span>
+<h2>Apply for Job</h2>
+
+<form id="jobForm">
+<input type="hidden" name="access_key" value="339d0aeb-b446-4531-a692-a8addc6dd2fc">
+<input type="hidden" name="subject" value="New Career Application">
+
+<input type="text" name="job_role" id="jobRole" readonly required>
+<input type="text" name="name" placeholder="Full Name" required>
+<input type="text" name="contact" placeholder="Phone or Email" required>
+<input type="text" name="location" placeholder="Location" required>
+
+<!-- UPLOAD (SELECTABLE BUT NOT SENT) -->
+<input type="file">
+<small style="font-size:12px;color:#666">
+Please upload your others document via WhatsApp or email.
+</small>
+
+<button type="submit">Apply Now</button>
+
+<div class="message success" id="successMsg">
+Application submitted successfully. We will contact you soon.
+</div>
+
+<div class="message error" id="errorMsg">
+Submission failed. Please try again later.
+</div>
+</form>
+
+</div>
+</div>
+
+<div class="footer">
+    <p>Contact Us</p>
+
+    <div style="margin-top:12px; display:flex; justify-content:center; gap:15px; flex-wrap:wrap;">
+        
+        <!-- WhatsApp -->
+        <a href="https://wa.me/9779841151231" target="_blank"
+           style="background:#25D366;color:#fff;padding:12px 22px;border-radius:30px;
+           text-decoration:none;font-weight:500;">
+           WhatsApp
+        </a>
+
+        <!-- Email -->
+        <a href="mailto:patientcarenepal@gmail.com"
+           style="background:#ffffff;color:#0b6edc;padding:12px 22px;border-radius:30px;
+           text-decoration:none;font-weight:500;">
+           Email Us
+        </a>
+
+    </div>
+
+    <p style="margin-top:15px;font-size:13px">
+        © 2025 Birami Kuruwa Nepal
+    </p>
+</div>
+
+
+<script>
+/* Render jobs */
+const jobList = document.getElementById("jobList");
+jobs.forEach(job=>{
+    jobList.innerHTML += `
+    <div class="job-card">
+       <img src="images/main-logo.jpg" alt="Patient Care Nepal">
+
+
+        <div class="job-content">
+            <h3>${job}</h3>
+            <p>Professional healthcare service opportunity.</p>
+            <button onclick="openForm('${job}')">Apply Now</button>
+        </div>
+    </div>`;
+});
+
+/* Modal */
+function openForm(role){
+    document.getElementById("jobRole").value = role;
+    document.getElementById("applyModal").classList.add("active");
+}
+function closeForm(){
+    document.getElementById("applyModal").classList.remove("active");
+}
+
+/* Submit */
+document.getElementById("jobForm").addEventListener("submit",function(e){
+    e.preventDefault();
+
+    const success=document.getElementById("successMsg");
+    const error=document.getElementById("errorMsg");
+    success.style.display="none";
+    error.style.display="none";
+
+    fetch("https://api.web3forms.com/submit",{
+        method:"POST",
+        body:new FormData(this)
+    }).then(res=>{
+        if(res.ok){
+            success.style.display="block";
+            this.reset();
+        }else{
+            error.style.display="block";
+        }
+    }).catch(()=>error.style.display="block");
+});
+</script>
+
+</body>
+</html>
